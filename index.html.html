@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kellya Timdigue Sabala — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --warm-white: #FAF8F4;
+    --charcoal: #1C1C1A;
+    --ink: #2E2D28;
+    --muted: #7A7770;
+    --accent: #B85C38;
+    --accent-light: #E8C4B0;
+    --accent-pale: #F7EDE5;
+    --teal: #2A7B6F;
+    --teal-light: #D4EDEA;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --border: rgba(28,28,26,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    color: var(--charcoal);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 80px 3rem 3rem;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-text {}
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-pale);
+    border: 1px solid var(--accent-light);
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 0.6rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    margin-bottom: 1.75rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #4A4840;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--charcoal);
+    color: var(--cream);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--ink); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1.5px solid var(--border);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); background: var(--accent-pale); }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .photo-frame {
+    width: 300px;
+    height: 360px;
+    border-radius: 12px;
+    background: var(--accent-light);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #E8C4B0 0%, #D4A896 100%);
+    color: var(--charcoal);
+  }
+
+  .initials-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(28,28,26,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    margin-bottom: 0.75rem;
+  }
+
+  .photo-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 1rem;
+    width: 300px;
+  }
+
+  .stat-card {
+    flex: 1;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: var(--charcoal);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--charcoal);
+    margin-bottom: 3rem;
+    line-height: 1.1;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .skill-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(28,28,26,0.08);
+  }
+
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .skill-icon.coral { background: var(--accent-pale); color: var(--accent); }
+  .skill-icon.teal { background: var(--teal-light); color: var(--teal); }
+  .skill-icon.gold { background: #FDF3DC; color: #8B6914; }
+  .skill-icon.slate { background: #EDF0F4; color: #3E5170; }
+
+  .skill-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    margin-bottom: 0.4rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.75rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(28,28,26,0.1);
+  }
+
+  .project-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .project-type {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-type.dev { color: var(--accent); }
+  .project-type.web { color: var(--teal); }
+  .project-type.security { color: #6B42A8; }
+  .project-type.data { color: #8B6914; }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--charcoal);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-body {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .project-desc {
+    font-size: 0.875rem;
+    color: #5A5850;
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .stack-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .stack-tag.java { background: #FFF0E0; color: #C45C00; }
+  .stack-tag.sql { background: #E8F0FF; color: #2B52B5; }
+  .stack-tag.html { background: #FFF0E0; color: #C44A00; }
+  .stack-tag.python { background: #EDF8F0; color: #1A7A3C; }
+  .stack-tag.security { background: #F2EAF9; color: #6B2FA0; }
+  .stack-tag.js { background: #FFFBD4; color: #7A6000; }
+  .stack-tag.swing { background: #E8F0FF; color: #2B52B5; }
+
+  /* EDUCATION */
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--cream);
+    outline: 1px solid var(--accent);
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-degree {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-school {
+    font-size: 0.875rem;
+    color: var(--muted);
+  }
+
+  .timeline-school span {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* CONTACT */
+  .contact-wrapper {
+    background: var(--charcoal);
+    color: var(--cream);
+    border-radius: 20px;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .contact-title em { color: var(--accent-light); font-style: italic; }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    color: #B5B0A5;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(245,240,232,0.12);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--cream);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover {
+    background: rgba(245,240,232,0.07);
+    border-color: rgba(245,240,232,0.25);
+  }
+
+  .contact-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(245,240,232,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-link-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-link-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: #8A857E;
+    margin-bottom: 1px;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* LANGUAGES */
+  .lang-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .lang-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .lang-flag {
+    font-size: 1.4rem;
+  }
+
+  .lang-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--charcoal);
+  }
+
+  .lang-level {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* FADE IN ANIMATION */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.05s; }
+  .hero-name    { animation-delay: 0.15s; }
+  .hero-title   { animation-delay: 0.22s; }
+  .hero-bio     { animation-delay: 0.3s; }
+  .hero-cta     { animation-delay: 0.38s; }
+
+  .hero-visual {
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; text-align: center; padding: 90px 1.5rem 3rem; gap: 2.5rem; }
+    .hero-bio { margin-left: auto; margin-right: auto; }
+    .hero-cta { justify-content: center; }
+    .hero-visual { order: -1; }
+    .photo-frame { width: 200px; height: 240px; }
+    .stat-row { width: auto; }
+    section { padding: 4rem 1.5rem; }
+    .contact-wrapper { grid-template-columns: 1fr; padding: 2.5rem; gap: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Kellya T. Sabala</span>
+  <ul class="nav-links">
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1200px;margin:0 auto;padding:0 3rem;">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Disponible pour stage & alternance</span>
+      <h1 class="hero-name">Kellya<br><em>Timdigue Sabala</em></h1>
+      <p class="hero-title">Étudiante Licence Mathématiques-Informatique</p>
+      <p class="hero-bio">Passionnée par la technologie et le développement logiciel, je suis en troisième année à l'Université Catholique de l'Afrique de l'Ouest. Curieuse, rigoureuse et autonome, je cherche à transformer mes compétences en impact concret.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">✉ Me contacter</a>
+        <a href="https://github.com/timdiguesabala-png" class="btn-secondary" target="_blank">⌥ GitHub</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-frame">
+        <div class="photo-placeholder">
+          <div class="initials-circle">KS</div>
+          <span class="photo-label">Kellya T. Sabala</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Projets</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">ans d'études</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">7+</span>
+          <span class="stat-label">Langages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- COMPETENCES -->
+<section id="competences">
+  <p class="section-label">Savoir-faire</p>
+  <h2 class="section-title">Compétences techniques</h2>
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-icon coral">💻</div>
+      <p class="skill-name">Développement Web & Front-end</p>
+      <p style="font-size:0.85rem;color:#5A5850;line-height:1.6;">Création d'interfaces et de pages web structurées avec les technologies du web.</p>
+      <div class="skill-tags">
+        <span class="tag">HTML5</span>
+        <span class="tag">CSS3</span>
+        <span class="tag">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon teal">☕</div>
+      <p class="skill-name">Développement Applicatif</p>
+      <p style="font-size:0.85rem;color:#5A5850;line-height:1.6;">Conception de logiciels desktop avec interfaces graphiques et gestion de données.</p>
+      <div class="skill-tags">
+        <span class="tag">Java</span>
+        <span class="tag">Swing</span>
+        <span class="tag">Python</span>
+        <span class="tag">NetBeans</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon gold">🗄</div>
+      <p class="skill-name">Bases de données & SQL</p>
+      <p style="font-size:0.85rem;color:#5A5850;line-height:1.6;">Conception, modélisation et interrogation de bases de données relationnelles.</p>
+      <div class="skill-tags">
+        <span class="tag">SQL</span>
+        <span class="tag">Modélisation</span>
+        <span class="tag">Gestion BDD</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon slate">📊</div>
+      <p class="skill-name">Statistiques & Analyse de données</p>
+      <p style="font-size:0.85rem;color:#5A5850;line-height:1.6;">Analyse statistique, traitement de données et rédaction de rapports techniques.</p>
+      <div class="skill-tags">
+        <span class="tag">Langage R</span>
+        <span class="tag">RStudio</span>
+        <span class="tag">CSpro</span>
+        <span class="tag">Spadv55</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon coral">🔒</div>
+      <p class="skill-name">Cybersécurité (initiation)</p>
+      <p style="font-size:0.85rem;color:#5A5850;line-height:1.6;">Découverte des outils de détection de vulnérabilités sur serveurs web.</p>
+      <div class="skill-tags">
+        <span class="tag">Nikto</span>
+        <span class="tag">Serveurs web</span>
+        <span class="tag">Audit</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon teal">📝</div>
+      <p class="skill-name">Rédaction & Documentation</p>
+      <p style="font-size:0.85rem;color:#5A5850;line-height:1.6;">Rédaction de documents scientifiques et techniques avec mise en forme professionnelle.</p>
+      <div class="skill-tags">
+        <span class="tag">LaTeX</span>
+        <span class="tag">TeXstudio</span>
+        <span class="tag">Word</span>
+        <span class="tag">GitHub</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJETS -->
+<section id="projets">
+  <p class="section-label">Réalisations</p>
+  <h2 class="section-title">Projets universitaires</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-type dev">Application Desktop</p>
+        <h3 class="project-title">Gestion de quincaillerie</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Logiciel complet de gestion des stocks, ventes et fournisseurs, réalisé en autonomie avec une interface graphique Swing et une base de données SQL.</p>
+        <div class="project-stack">
+          <span class="stack-tag java">Java</span>
+          <span class="stack-tag swing">Swing</span>
+          <span class="stack-tag sql">SQL</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-type web">Plateforme Web</p>
+        <h3 class="project-title">Mémoires de famille</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Plateforme privée permettant la collecte, l'organisation et le partage de souvenirs multimédias (photos, audios, vidéos, textes) au sein d'une famille.</p>
+        <div class="project-stack">
+          <span class="stack-tag html">HTML/CSS</span>
+          <span class="stack-tag js">JavaScript</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-type web">Application Web</p>
+        <h3 class="project-title">Gestion des réclamations</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Application centralisée permettant la gestion, le suivi et le traitement efficace des réclamations et des plaintes d'une organisation.</p>
+        <div class="project-stack">
+          <span class="stack-tag java">Java</span>
+          <span class="stack-tag sql">SQL</span>
+          <span class="stack-tag html">HTML/CSS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-type security">Cybersécurité</p>
+        <h3 class="project-title">NIKTO — Scanner de vulnérabilités</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Utilisation et exploration de l'outil Nikto pour l'audit et la détection de failles sur des serveurs web dans un cadre pédagogique.</p>
+        <div class="project-stack">
+          <span class="stack-tag security">Nikto</span>
+          <span class="stack-tag security">Web Security</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <p class="project-type data">Apprentissage autonome</p>
+        <h3 class="project-title">Python & Automatisation</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Exploration des fondamentaux de Python par l'autoformation et réalisation de scripts pour automatiser des tâches répétitives.</p>
+        <div class="project-stack">
+          <span class="stack-tag python">Python</span>
+          <span class="stack-tag python">Scripting</span>
+          <span class="stack-tag python">Automatisation</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FORMATION -->
+<section id="formation">
+  <p class="section-label">Parcours</p>
+  <h2 class="section-title">Formation & Langues</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;flex-wrap:wrap;">
+    <div>
+      <h3 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;">Diplômes</h3>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <p class="timeline-date">2023 – 2026 · En cours</p>
+          <h4 class="timeline-degree">Licence Mathématiques-Informatique</h4>
+          <p class="timeline-school">Université Catholique de l'Afrique de l'Ouest — <span>Togo, Lomé</span></p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-date">2022 – 2023</p>
+          <h4 class="timeline-degree">Baccalauréat Scientifique Série C</h4>
+          <p class="timeline-school">Lycée Collège Luthérien Joseph Pandaré — <span>Tchad</span></p>
+        </div>
+
+        <div class="timeline-item">
+          <p class="timeline-date">2020</p>
+          <h4 class="timeline-degree">Brevet d'Étude Fondamental</h4>
+          <p class="timeline-school">Lycée Collège Notre Dame de l'Assomption — <span>Tchad</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;">Langues</h3>
+      <div class="lang-row" style="flex-direction:column;">
+        <div class="lang-card">
+          <span class="lang-flag">🇫🇷</span>
+          <div>
+            <p class="lang-name">Français</p>
+            <p class="lang-level">Courant — langue principale</p>
+          </div>
+        </div>
+        <div class="lang-card">
+          <span class="lang-flag">🇬🇧</span>
+          <div>
+            <p class="lang-name">Anglais</p>
+            <p class="lang-level">Intermédiaire</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;">
+        <h3 style="font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:1.25rem;">Qualités personnelles</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="tag" style="padding:6px 14px;font-size:0.78rem;">Travail en équipe</span>
+          <span class="tag" style="padding:6px 14px;font-size:0.78rem;">Autonomie</span>
+          <span class="tag" style="padding:6px 14px;font-size:0.78rem;">Esprit d'analyse</span>
+          <span class="tag" style="padding:6px 14px;font-size:0.78rem;">Apprentissage rapide</span>
+          <span class="tag" style="padding:6px 14px;font-size:0.78rem;">Rigueur</span>
+          <span class="tag" style="padding:6px 14px;font-size:0.78rem;">Communication</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div>
+      <h2 class="contact-title">Envie de<br><em>collaborer ?</em></h2>
+      <p class="contact-sub">Je suis ouverte aux opportunités de stage, alternance, ou tout projet qui me permettrait de développer mes compétences et de contribuer à quelque chose de concret.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:timdiguesabala@gmail.com">
+        <div class="contact-link-icon">✉</div>
+        <div class="contact-link-text">
+          <span class="contact-link-label">Email</span>
+          <span class="contact-link-value">timdiguesabala@gmail.com</span>
+        </div>
+      </a>
+      <a class="contact-link" href="tel:+22870188483">
+        <div class="contact-link-icon">📞</div>
+        <div class="contact-link-text">
+          <span class="contact-link-label">Téléphone</span>
+          <span class="contact-link-value">+228 70-18-84-83</span>
+        </div>
+      </a>
+      <a class="contact-link" href="https://github.com/timdiguesabala-png" target="_blank">
+        <div class="contact-link-icon">⌥</div>
+        <div class="contact-link-text">
+          <span class="contact-link-label">GitHub</span>
+          <span class="contact-link-value">timdiguesabala-png</span>
+        </div>
+      </a>
+      <a class="contact-link" href="#">
+        <div class="contact-link-icon">📍</div>
+        <div class="contact-link-text">
+          <span class="contact-link-label">Localisation</span>
+          <span class="contact-link-value">Lomé, Togo</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Kellya Timdigue Sabala — Portfolio personnel</p>
+</footer>
+
+</body>
+</html>
